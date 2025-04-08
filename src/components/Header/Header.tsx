@@ -1,11 +1,11 @@
 import { Flex } from '@chakra-ui/react';
 
-import HeaderMenuIcon from '~/components/Header/components/HeaderMenuIcon/HeaderMenuIcon';
-import HeaderNav from '~/components/Header/components/HeaderNav/NeaderNav';
-import HeaderUser from '~/components/Header/components/HeaderUser/HeaderUser';
-import Logo from '~/components/Logo/Logo';
+import { HeaderMenuIcon } from '~/components/Header/components/HeaderMenuIcon/HeaderMenuIcon';
+import { HeaderNav } from '~/components/Header/components/HeaderNav/NeaderNav';
+import { HeaderUser } from '~/components/Header/components/HeaderUser/HeaderUser';
+import { Logo } from '~/components/Logo/Logo';
 
-const Header = () => (
+export const Header = () => (
     <header>
         <Flex
             pt='16px'
@@ -28,5 +28,3 @@ const Header = () => (
         </Flex>
     </header>
 );
-
-export default Header;

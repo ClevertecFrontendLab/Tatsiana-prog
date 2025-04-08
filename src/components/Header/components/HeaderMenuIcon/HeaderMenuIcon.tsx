@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
-const HeaderMenuIcon = () => (
+export const HeaderMenuIcon = () => (
     <Box display={{ base: 'block', md: 'none' }}>
         <svg
             width='24'
@@ -13,4 +13,3 @@ const HeaderMenuIcon = () => (
         </svg>
     </Box>
 );
-export default HeaderMenuIcon;

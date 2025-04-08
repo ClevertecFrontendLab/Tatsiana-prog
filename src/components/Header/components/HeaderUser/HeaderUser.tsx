@@ -1,10 +1,9 @@
-import { Flex } from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import userImage from '../../../../assets/image/header/userimage.png';
 import styles from './HeaderUser.module.css';
 
-const HeaderUser = () => (
+export const HeaderUser = () => (
     <Flex
         display={{ base: 'none', md: 'flex' }}
         className={styles.headerUser}
@@ -20,4 +19,3 @@ const HeaderUser = () => (
         </Box>
     </Flex>
 );
-export default HeaderUser;

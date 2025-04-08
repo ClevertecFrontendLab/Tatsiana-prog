@@ -1,7 +1,6 @@
-import { Flex } from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
-const Logo = () => (
+export const Logo = () => (
     <Flex align='center'>
         <Box as='svg' width='32px' height='32px' viewBox='0 0 72 72' fill='none'>
             <path
@@ -68,5 +67,3 @@ const Logo = () => (
         </Box>
     </Flex>
 );
-
-export default Logo;
