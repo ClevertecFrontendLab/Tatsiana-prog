@@ -3,6 +3,14 @@
     src: url('../fonts/Inter/static/Inter_18pt-Regular.ttf') format('ttf');
 }
 
+:root {
+    --primary-color1: #c4ff61;
+    --primary-color2: #eaffc7;
+    --black-color: #000;
+    --background-header: #ffffd3;
+    --text-color: #333;
+}
+
 #root {
     font-family: 'Inter', sans-serif;
     width: 100%;
