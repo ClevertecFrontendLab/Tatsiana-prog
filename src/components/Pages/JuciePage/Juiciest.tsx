@@ -1,0 +1,41 @@
+import { Box, Flex, Heading } from '@chakra-ui/react';
+
+import { ButttonMore } from '~/components/Buttons/ButtonMore';
+
+import { CardsJuciest } from '../../Cards/CardsJuciest';
+import { Header } from '../../Header/Header';
+import { SearchList } from '../../SearchList/SearchList';
+import { SideBar } from '../../Sidebar/SideBar';
+import { UserMetrics } from '../../UserMetrics/UserMetrics';
+
+const Juciest = () => (
+    <>
+        <Header></Header>
+        <main>
+            <>
+                <Flex justifyContent='space-between'>
+                    <SideBar />
+                    <Box as='section'>
+                        <Box>
+                            <Heading
+                                as='h1'
+                                size='48px'
+                                color='0000'
+                                mt='32px'
+                                mb='32px'
+                                fontWeight='bold'
+                            >
+                                Самое сочное!
+                            </Heading>
+                            <SearchList></SearchList>
+                            <CardsJuciest cardCount={8} />
+                            <ButttonMore />
+                        </Box>
+                    </Box>
+                    <UserMetrics />
+                </Flex>
+            </>
+        </main>
+    </>
+);
+export default Juciest;

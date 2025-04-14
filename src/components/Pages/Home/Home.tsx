@@ -1,9 +1,14 @@
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
 
+import IconArrow from '../../../assets/icons/icon-arrow.png';
+import { CardsJuciest } from '../../Cards/CardsJuciest';
+import { CardsNew } from '../../Cards/CardsNew';
 import { Header } from '../../Header/Header';
 import { SearchList } from '../../SearchList/SearchList';
-import Sidebar from '../../SideBar/SideBar';
+import { SideBar } from '../../Sidebar/SideBar';
 import { UserMetrics } from '../../UserMetrics/UserMetrics';
+import { CulinarBlog } from './CulinarBlog';
+import { VeganBlock } from './VeganBlock';
 
 const Home = () => (
     <>
@@ -11,9 +16,9 @@ const Home = () => (
         <main>
             <>
                 <Flex justifyContent='space-between' height='1040px'>
-                    <Sidebar />
-                    <Box>
-                        <section>
+                    <SideBar />
+                    <Box as='section'>
+                        <Box>
                             <Heading
                                 as='h1'
                                 size='48px'
@@ -25,7 +30,43 @@ const Home = () => (
                                 Приятного аппетита!
                             </Heading>
                             <SearchList></SearchList>
-                        </section>
+                            <Box>
+                                <Heading as='h2' textAlign='left'>
+                                    Новые рецепты
+                                </Heading>
+                                <CardsNew />
+                            </Box>
+                            <Box mb='40px'>
+                                <Heading as='h2' textAlign='left'>
+                                    Самое сочное
+                                </Heading>
+                                <CardsJuciest cardCount={4} />
+                            </Box>
+                            <Box p='24px' bg='var(--primary-color1)' mb='40px'>
+                                <Flex justifyContent='space-between'>
+                                    <Heading as='h2' textAlign='left'>
+                                        Кулинарные блоги
+                                    </Heading>
+                                    <Box>
+                                        <Button color='var(--black-color)' bg='none'>
+                                            <Box
+                                                as='span'
+                                                fontSize='18px'
+                                                fontWeight='600'
+                                                mr='9px'
+                                            >
+                                                Все авторы
+                                            </Box>
+                                            <Box as='span'>
+                                                <Image src={IconArrow} alt='icon'></Image>
+                                            </Box>
+                                        </Button>
+                                    </Box>
+                                </Flex>
+                                <CulinarBlog />
+                            </Box>
+                            <VeganBlock />
+                        </Box>
                     </Box>
                     <UserMetrics />
                 </Flex>

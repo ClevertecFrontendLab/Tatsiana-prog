@@ -4,78 +4,118 @@ import {
     AccordionIcon,
     AccordionItem,
     AccordionPanel,
+    Box,
+    Button,
     Flex,
     Image,
     Link,
     Stack,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 
-import data from './../../data/menu.json';
+import IconExit from '../../assets/icons/icon-exit.png';
+import data from '../../data/menu.json';
 
-const items = data;
-const SideBar = () => (
-    <aside>
-        <Stack>
-            <ChakraAccordion
-                defaultIndex={[0]}
-                allowMultiple
-                width='256px'
-                height='644px'
-                pt='46px'
-                pl='10px'
-                pb='10px'
-                pr='16px'
-            >
-                {Object.entries(items).map(([key, item]) => (
-                    <AccordionItem key={key} border='none'>
-                        <AccordionButton
-                            display='flex'
-                            justifyContent='space-between'
-                            fontSize='16px'
-                            fontWeight='500'
-                            pt='12px'
-                            pl='8px'
-                            pb='12px'
-                            pr='16px'
-                            _hover={{ bg: 'var( --primary-color2)' }}
-                        >
-                            <Flex>
-                                <Image
-                                    src={item.icon}
-                                    alt={item.name}
-                                    boxSize='24px'
-                                    marginRight='16px'
-                                />
-                                {item.name}
-                            </Flex>
-                            <AccordionIcon />
-                        </AccordionButton>
-                        <AccordionPanel textAlign='left'>
-                            {Object.entries(item.custom).map(([typeKey, type]) => (
-                                <div key={typeKey}>
-                                    <Link
-                                        href='#'
-                                        mt='16px'
-                                        mb='16px'
-                                        p='11px'
-                                        display='block'
-                                        borderLeft='2px solid var(--primary-color1)'
-                                        transition='border-left 0.3s linear'
-                                        _hover={{
-                                            pl: '13px',
-                                            borderLeft: '8px solid var(--primary-color1)',
-                                        }}
-                                    >
-                                        {type.title}{' '}
-                                    </Link>
-                                </div>
-                            ))}
-                        </AccordionPanel>
-                    </AccordionItem>
-                ))}
-            </ChakraAccordion>
-        </Stack>
-    </aside>
-);
+export const SideBar = () => {
+    const [activeIndex, setActiveIndex] = useState<string | null>(null);
 
-export default SideBar;
+    return (
+        <Flex as='aside' flexDirection='column' justifyContent='space-between' p='32px 0'>
+            <Stack height='644px' overflowY='scroll' className='sidebar-scroll'>
+                <ChakraAccordion allowMultiple width='256px' pt='14px' pl='10px' pb='10px' pr='4px'>
+                    {Object.entries(data).map(([key, item]) => (
+                        <AccordionItem key={key} border='none'>
+                            <AccordionButton
+                                onClick={() =>
+                                    setActiveIndex((prev) => (prev === key ? null : key))
+                                }
+                                display='flex'
+                                justifyContent='space-between'
+                                fontSize='16px'
+                                pt='12px'
+                                pl='8px'
+                                pb='12px'
+                                pr='16px'
+                                fontWeight={activeIndex === key ? '700' : '500'}
+                                bg={activeIndex === key ? 'var(--primary-color2)' : 'transparent'}
+                                _hover={{ bg: 'var(--primary-color4)' }}
+                            >
+                                <Flex align='center'>
+                                    <Image
+                                        src={item.icon}
+                                        alt={item.name}
+                                        boxSize='24px'
+                                        mr='16px'
+                                    />
+                                    {item.name}
+                                </Flex>
+                                <AccordionIcon />
+                            </AccordionButton>
+
+                            <AccordionPanel textAlign='left'>
+                                {Object.entries(item.custom).map(([typeKey, type]) => (
+                                    <Box key={typeKey}>
+                                        <Link
+                                            href='#'
+                                            mt='16px'
+                                            mb='16px'
+                                            p='11px'
+                                            display='block'
+                                            borderLeft='2px solid var(--primary-color1)'
+                                            transition='border-left 0.3s linear'
+                                            _hover={{
+                                                pl: '13px',
+                                                borderLeft: '8px solid var(--primary-color1)',
+                                                bg: 'var(--primary-color4)',
+                                            }}
+                                        >
+                                            {type.title}
+                                        </Link>
+                                    </Box>
+                                ))}
+                            </AccordionPanel>
+                        </AccordionItem>
+                    ))}
+                </ChakraAccordion>
+            </Stack>
+
+            <Box as='footer' px='24px' textAlign='left'>
+                <Box
+                    as='p'
+                    fontSize='12px'
+                    lineHeight='16px'
+                    fontWeight='500'
+                    color='rgba(0, 0, 0, 0.24)'
+                    mb='16px'
+                >
+                    Версия программы 03.25
+                </Box>
+                <Box
+                    as='p'
+                    fontSize='12px'
+                    lineHeight='16px'
+                    fontWeight='400'
+                    color='rgba(0, 0, 0, 0.64)'
+                >
+                    Все права защищены,
+                    <br />
+                    ученический файл, ©Клевер Технолоджи, 2025
+                </Box>
+                <Stack>
+                    <Button
+                        bg='none'
+                        textAlign='left'
+                        padding='0'
+                        justifyContent='flex-start'
+                        mt='16px'
+                    >
+                        <Box as='span' mr='6px'>
+                            <Image src={IconExit} alt='icon'></Image>
+                        </Box>
+                        Выйти
+                    </Button>
+                </Stack>
+            </Box>
+        </Flex>
+    );
+};

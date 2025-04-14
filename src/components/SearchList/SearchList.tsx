@@ -70,7 +70,7 @@ export const SearchList = () => {
     };
 
     return (
-        <Box width='518px' m='auto'>
+        <Box width='518px' m=' 0 auto 56px'>
             <form>
                 <Flex gap='12px' justifyContent='center' position='relative'>
                     <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>

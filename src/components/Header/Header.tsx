@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 
+import { HeaderNav } from '~/components/Header/components/Breadcrumbs/BreadCrumbs';
 import { HeaderMenuIcon } from '~/components/Header/components/HeaderMenuIcon/HeaderMenuIcon';
-import { HeaderNav } from '~/components/Header/components/HeaderNav/NeaderNav';
 import { HeaderUser } from '~/components/Header/components/HeaderUser/HeaderUser';
 import { Logo } from '~/components/Logo/Logo';
 
