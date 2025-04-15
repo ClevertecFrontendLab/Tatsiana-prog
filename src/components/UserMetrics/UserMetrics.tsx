@@ -6,7 +6,12 @@ import { FollowersCounter } from '../Metrics/FollowersCounter';
 import { LikeCounter } from '../Metrics/LikeCounter';
 
 export const UserMetrics = () => (
-    <Flex flexDirection='column' justifyContent='space-between' alignItems='center'>
+    <Flex
+        flexDirection='column'
+        justifyContent='space-between'
+        alignItems='center'
+        display={{ md: 'flex', sm: 'none' }}
+    >
         <Flex flexDirection='column' gap='32px' pt='16px' pr='56px' pl='114px'>
             <CardStorage />
             <FollowersCounter />

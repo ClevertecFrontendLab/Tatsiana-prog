@@ -1,6 +1,7 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
 
 import { ButttonMore } from '~/components/Buttons/ButtonMore';
+import { FooterMobile } from '~/components/FooterMobile/FooterMobile';
 
 import { CardsJuciest } from '../../Cards/CardsJuciest';
 import { Header } from '../../Header/Header';
@@ -14,7 +15,7 @@ const Juciest = () => (
         <Header></Header>
         <main>
             <>
-                <Flex justifyContent='space-between'>
+                <Flex justifyContent='space-between' height='1040px'>
                     <SideBar />
                     <Box as='section'>
                         <Box>
@@ -38,6 +39,7 @@ const Juciest = () => (
                 </Flex>
             </>
         </main>
+        <FooterMobile />
     </>
 );
 export default Juciest;

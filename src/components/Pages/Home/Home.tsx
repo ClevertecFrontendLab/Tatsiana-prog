@@ -1,5 +1,7 @@
-import { Box, Button, Flex, Heading, Image, Link } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Link, useBreakpointValue } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
+
+import { FooterMobile } from '~/components/FooterMobile/FooterMobile';
 
 import IconArrow from '../../../assets/icons/icon-arrow.png';
 import { CardsJuciest } from '../../Cards/CardsJuciest';
@@ -11,11 +13,16 @@ import { UserMetrics } from '../../UserMetrics/UserMetrics';
 import { CulinarBlog } from './CulinarBlog';
 import { VeganBlock } from './VeganBlock';
 
-const Home = () => (
-    <>
-        <Header></Header>
-        <main>
-            <>
+const Home = () => {
+    const testId = useBreakpointValue({
+        base: 'juiciest-link-mobile',
+        md: 'juiciest-link',
+    });
+
+    return (
+        <>
+            <Header />
+            <main>
                 <Flex justifyContent='space-between' height='1040px'>
                     <SideBar />
                     <Box as='section'>
@@ -30,13 +37,16 @@ const Home = () => (
                             >
                                 Приятного аппетита!
                             </Heading>
-                            <SearchList></SearchList>
+
+                            <SearchList />
+
                             <Box>
                                 <Heading as='h2' textAlign='left'>
                                     Новые рецепты
                                 </Heading>
                                 <CardsNew />
                             </Box>
+
                             <Box mb='40px'>
                                 <Flex justifyContent='space-between' alignItems='center'>
                                     <Heading as='h2' textAlign='left'>
@@ -45,11 +55,12 @@ const Home = () => (
                                     <Link
                                         as={RouterLink}
                                         to='/samoe-sochnoe'
+                                        data-test-id={testId}
                                         p='10px 24px'
                                         mr='0'
                                         ml='auto'
                                         fontWeight='700'
-                                        display='Flex'
+                                        display='flex'
                                         alignItems='center'
                                         borderRadius='8px'
                                         bg='var(--primary-color5)'
@@ -58,15 +69,15 @@ const Home = () => (
                                             bg: 'var(--primary-color4)',
                                         }}
                                     >
-                                        {' '}
                                         вся подборка
                                         <Box as='span' ml='9px'>
-                                            <Image src={IconArrow} alt='icon'></Image>
+                                            <Image src={IconArrow} alt='icon' />
                                         </Box>
                                     </Link>
                                 </Flex>
                                 <CardsJuciest cardCount={4} />
                             </Box>
+
                             <Box p='24px' bg='var(--primary-color1)' mb='40px'>
                                 <Flex justifyContent='space-between'>
                                     <Heading as='h2' textAlign='left'>
@@ -83,20 +94,23 @@ const Home = () => (
                                                 Все авторы
                                             </Box>
                                             <Box as='span'>
-                                                <Image src={IconArrow} alt='icon'></Image>
+                                                <Image src={IconArrow} alt='icon' />
                                             </Box>
                                         </Button>
                                     </Box>
                                 </Flex>
                                 <CulinarBlog />
                             </Box>
+
                             <VeganBlock />
                         </Box>
                     </Box>
                     <UserMetrics />
                 </Flex>
-            </>
-        </main>
-    </>
-);
+            </main>
+            <FooterMobile />
+        </>
+    );
+};
+
 export default Home;

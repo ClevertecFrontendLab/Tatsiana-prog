@@ -6,7 +6,7 @@ const breakpoints = {
     md: '48.06em', // ~769px
     lg: '62em', // ~992px
     xl: '90em', // ~1440px
-    '2xl': '120em', // ~1920px
+    xxl: '120em', // ~1920px
 };
 
 const theme = extendTheme({

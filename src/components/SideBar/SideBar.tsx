@@ -21,63 +21,77 @@ export const SideBar = () => {
     const [activeIndex, setActiveIndex] = useState<string | null>(null);
 
     return (
-        <Flex as='aside' flexDirection='column' justifyContent='space-between' p='32px 0'>
+        <Flex
+            as='aside'
+            flexDirection='column'
+            justifyContent='space-between'
+            p='32px 0'
+            display={{ md: 'flex', sm: 'none' }}
+        >
             <Stack height='644px' overflowY='scroll' className='sidebar-scroll'>
                 <ChakraAccordion allowMultiple width='256px' pt='14px' pl='10px' pb='10px' pr='4px'>
-                    {Object.entries(data).map(([key, item]) => (
-                        <AccordionItem key={key} border='none'>
-                            <AccordionButton
-                                onClick={() =>
-                                    setActiveIndex((prev) => (prev === key ? null : key))
-                                }
-                                display='flex'
-                                justifyContent='space-between'
-                                fontSize='16px'
-                                pt='12px'
-                                pl='8px'
-                                pb='12px'
-                                pr='16px'
-                                fontWeight={activeIndex === key ? '700' : '500'}
-                                bg={activeIndex === key ? 'var(--primary-color2)' : 'transparent'}
-                                _hover={{ bg: 'var(--primary-color4)' }}
-                            >
-                                <Flex align='center'>
-                                    <Image
-                                        src={item.icon}
-                                        alt={item.name}
-                                        boxSize='24px'
-                                        mr='16px'
-                                    />
-                                    {item.name}
-                                </Flex>
-                                <AccordionIcon />
-                            </AccordionButton>
+                    {Object.entries(data).map(([key, item]) => {
+                        const dataTestId = item.name === 'Веганская кухня' ? 'vegan-cuisine' : null;
 
-                            <AccordionPanel textAlign='left'>
-                                {Object.entries(item.custom).map(([typeKey, type]) => (
-                                    <Box key={typeKey}>
-                                        <Link
-                                            as={RouterLink} // Используйте Link из Chakra UI
-                                            to='/veganskaya-kuhnya'
-                                            mt='16px'
-                                            mb='16px'
-                                            p='11px'
-                                            display='block'
-                                            borderLeft='2px solid var(--primary-color1)'
-                                            transition='border-left 0.3s linear'
-                                            _hover={{
-                                                pl: '13px',
-                                                borderLeft: '8px solid var(--primary-color1)',
-                                                bg: 'var(--primary-color4)',
-                                            }}
-                                        >
-                                            {type.title}
-                                        </Link>
-                                    </Box>
-                                ))}
-                            </AccordionPanel>
-                        </AccordionItem>
-                    ))}
+                        return (
+                            <AccordionItem key={key} border='none' data-test-id={dataTestId}>
+                                <AccordionButton
+                                    onClick={() =>
+                                        setActiveIndex((prev) => (prev === key ? null : key))
+                                    }
+                                    display='flex'
+                                    justifyContent='space-between'
+                                    fontSize='16px'
+                                    pt='12px'
+                                    pl='8px'
+                                    pb='12px'
+                                    pr='16px'
+                                    fontWeight={activeIndex === key ? '700' : '500'}
+                                    bg={
+                                        activeIndex === key
+                                            ? 'var(--primary-color2)'
+                                            : 'transparent'
+                                    }
+                                    _hover={{ bg: 'var(--primary-color4)' }}
+                                >
+                                    <Flex align='center'>
+                                        <Image
+                                            src={item.icon}
+                                            alt={item.name}
+                                            boxSize='24px'
+                                            mr='16px'
+                                        />
+                                        {item.name}
+                                    </Flex>
+                                    <AccordionIcon />
+                                </AccordionButton>
+
+                                <AccordionPanel textAlign='left'>
+                                    {Object.entries(item.custom).map(([typeKey, type]) => (
+                                        <Box key={typeKey}>
+                                            <Link
+                                                as={RouterLink}
+                                                to='/veganskaya-kuhnya'
+                                                mt='16px'
+                                                mb='16px'
+                                                p='11px'
+                                                display='block'
+                                                borderLeft='2px solid var(--primary-color1)'
+                                                transition='border-left 0.3s linear'
+                                                _hover={{
+                                                    pl: '13px',
+                                                    borderLeft: '8px solid var(--primary-color1)',
+                                                    bg: 'var(--primary-color4)',
+                                                }}
+                                            >
+                                                {type.title}
+                                            </Link>
+                                        </Box>
+                                    ))}
+                                </AccordionPanel>
+                            </AccordionItem>
+                        );
+                    })}
                 </ChakraAccordion>
             </Stack>
 

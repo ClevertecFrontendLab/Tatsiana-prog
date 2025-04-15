@@ -15,20 +15,31 @@ export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
     const displayedRecipes = RecipesJuciest.slice(0, cardCount);
 
     return (
-        <Grid mt='24px' mb='16px' templateColumns='repeat(2, 1fr)' gap='24px'>
+        <Grid
+            mt='24px'
+            mb='16px'
+            templateColumns={{
+                base: 'repeat(1, 1fr)',
+                sm: 'repeat(2, 2fr)',
+                md: 'repeat(1, 1fr)',
+                xl: 'repeat(1, 1fr)',
+                xxl: 'repeat(2, 2fr)',
+            }}
+            gap='24px'
+        >
             {displayedRecipes.map((recipe, index) => (
                 <GridItem key={index}>
                     <Flex
-                        width='668px'
-                        height='244px'
+                        width={{ xxl: '668px', xl: '100%', md: '50%' }}
+                        height={{ md: '244px', sm: '128px' }}
                         alignItems='center'
                         borderRadius='6px'
                         border='1px rgba(0, 0, 0, 0.08) solid'
                     >
                         <Box width='50%' height='244px'>
                             <Image
-                                width='346px'
-                                height='244px'
+                                width={{ xxl: '244px', xl: '100%' }}
+                                height={{ md: '244px', sm: '128px' }}
                                 objectFit='cover'
                                 borderTopLeftRadius='8px'
                                 borderBottomLeftRadius='8px'

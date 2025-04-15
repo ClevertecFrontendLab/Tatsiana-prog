@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 
+import { FooterMobile } from '~/components/FooterMobile/FooterMobile';
+
 import { ButttonMore } from '../../Buttons/ButtonMore';
 import { CardsJuciest } from '../../Cards/CardsJuciest';
 import { Header } from '../../Header/Header';
@@ -13,7 +15,7 @@ const Vegan = () => (
         <Header></Header>
         <main>
             <>
-                <Flex justifyContent='space-between'>
+                <Flex justifyContent='space-between' height='1040px'>
                     <SideBar />
                     <Box as='section'>
                         <Box>
@@ -117,6 +119,7 @@ const Vegan = () => (
                 </Flex>
             </>
         </main>
+        <FooterMobile />
     </>
 );
 
