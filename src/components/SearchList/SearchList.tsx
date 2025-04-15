@@ -113,6 +113,12 @@ export const SearchList = () => {
                             w='458px'
                             h='48px'
                             placeholder='Название или ингредиент...'
+                            sx={{
+                                '::placeholder': {
+                                    FontSize: '18px',
+                                    color: 'var(--primary-color8)',
+                                },
+                            }}
                         />
                         <Box
                             position='absolute'
@@ -125,7 +131,7 @@ export const SearchList = () => {
                                 <Image src='/src/assets/icons/icon-search.png' alt='icon' />
                             </button>
                         </Box>
-                    </Box>
+                    </Box>{' '}
                 </Flex>
                 <Flex gap='10px' align='center' mt='24px' justifyContent='center'>
                     <SwitchWithLabel></SwitchWithLabel>

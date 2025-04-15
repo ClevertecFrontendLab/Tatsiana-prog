@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import SaveIcon from '../../assets/icons/metrics/icon-save.svg';
 

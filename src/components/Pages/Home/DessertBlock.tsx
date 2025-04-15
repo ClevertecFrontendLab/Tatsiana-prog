@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { CardsCounter } from '~/components/Buttons/Cardscounter';
 import { LikesCounter } from '~/components/Buttons/LikesCounter';
 
-interface VeganBlockCard {
+interface DessertBlockCard {
     category: {
         name: string;
         icon: string;
@@ -18,24 +18,25 @@ interface FoodDish {
     image: string;
 }
 
-const VeganBlockCards: VeganBlockCard[] = [
+const DessertBlockCards: DessertBlockCard[] = [
     {
         category: {
-            name: 'Вторые блюда',
+            name: 'Детские блюда',
             icon: '/src/assets/icons/sidebar/icon3.svg',
         },
-        type: 'Картошка, тушенная с болгарским перцем и фасолью в томатном соусе',
+        type: 'Бананово-молочное желе',
         description:
-            'Картошка, тушенная с болгарским перцем, фасолью, морковью и луком, - вариант сытного блюда на каждый день...',
+            'Молочное желе – это просто, вкусно и полезно, ведь для его приготовления в качестве основы используется молоко.',
     },
     {
         category: {
-            name: 'Вторые блюда',
+            name: 'Детские блюда',
             icon: '/src/assets/icons/sidebar/icon3.svg',
         },
-        type: 'Капустные котлеты',
+        type: 'Нежный сливочно-сырный крем для кексов',
+
         description:
-            'Капустные котлеты по этому рецепту получаются необычайно пышными и невероятно вкусными...',
+            'Сливочно-сырным кремом можно украсить кексы, либо другую выпечку, а также этим кремом можно наполнить заварные пирожные.',
     },
 ];
 
@@ -54,8 +55,8 @@ const fooddish: FoodDish[] = [
     },
 ];
 
-export const VeganBlock: React.FC = () => {
-    const [expandedIndex, setExpandedIndex] = useState<number | null>(null); // Тип для состояния
+export const DessertBlock: React.FC = () => {
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
     const toggleDescription = (index: number) => {
         setExpandedIndex(expandedIndex === index ? null : index);
@@ -64,15 +65,16 @@ export const VeganBlock: React.FC = () => {
     return (
         <Box mt='40px' pt='24px' borderTop=' 1px solid rgba(0, 0, 0, 0.08)'>
             <Flex justifyContent='space-between' mb='24px'>
-                <Heading as='h2'>Веганская кухня</Heading>
+                <Heading as='h2'>Десерты, выпечка</Heading>
                 <Box width='668px' textAlign='left'>
-                    Интересны не только убеждённым вегетарианцам, но и тем, кто хочет попробовать
-                    вегетарианскую диету.
+                    Без них невозможно представить себе ни современную, ни традиционную кулинарию.
+                    Пироги и печенья, блины, пончики, вареники и, конечно, хлеб - рецепты изделий из
+                    теста многообразны и невероятно популярны.
                 </Box>
             </Flex>
             <Flex gap='24px'>
                 <Flex gap='24px'>
-                    {VeganBlockCards.map((VeganBlockCardItem, index) => (
+                    {DessertBlockCards.map((DessertBlockCardItem, index) => (
                         <Box
                             key={index}
                             width='322px'
@@ -95,7 +97,7 @@ export const VeganBlock: React.FC = () => {
                                 textOverflow='ellipsis'
                                 className={expandedIndex === index ? '' : 'limit-header'}
                             >
-                                {VeganBlockCardItem.type}
+                                {DessertBlockCardItem.type}
                             </Heading>
                             <Box
                                 as='p'
@@ -107,24 +109,24 @@ export const VeganBlock: React.FC = () => {
                                 display={expandedIndex === index ? 'block' : '-webkit-box'}
                                 sx={{
                                     WebkitBoxOrient: 'vertical',
-                                    WebkitLineClamp: expandedIndex === index ? 'unset' : 3, // Ограничение на 3 строки
+                                    WebkitLineClamp: expandedIndex === index ? 'unset' : 3,
                                     textOverflow: 'ellipsis',
                                 }}
-                                className={expandedIndex === index ? '' : 'limit-text'} // Применяем класс в зависимости от состояния
+                                className={expandedIndex === index ? '' : 'limit-text'}
                             >
                                 {expandedIndex === index
-                                    ? VeganBlockCardItem.description
-                                    : `${VeganBlockCardItem.description.substring(0, 100)}...`}
+                                    ? DessertBlockCardItem.description
+                                    : `${DessertBlockCardItem.description.substring(0, 100)}...`}
                             </Box>
                             <Flex justifyContent='space-between'>
                                 <Flex gap='8px'>
                                     <Box>
                                         <Image
-                                            src={VeganBlockCardItem.category.icon}
-                                            alt={VeganBlockCardItem.category.name}
+                                            src={DessertBlockCardItem.category.icon}
+                                            alt={DessertBlockCardItem.category.name}
                                         />
                                     </Box>
-                                    <Box>{VeganBlockCardItem.category.name}</Box>
+                                    <Box>{DessertBlockCardItem.category.name}</Box>
                                 </Flex>
                                 <Flex>
                                     <CardsCounter />

@@ -9,6 +9,9 @@
     --primary-color3: #2db100;
     --primary-color4: #ffffd3;
     --primary-color5: #b1ff2e;
+    --primary-color7: #d7ff94;
+    --primary-color8: #134b00;
+    --primary-color9: #2db100;
     --black-color: #000;
     --background-header: #ffffd3;
     --text-color: #333;
@@ -30,9 +33,17 @@ section {
 .limit-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Ограничение на 3 строки */
+    -webkit-line-clamp: 3;
     overflow: hidden;
-    text-overflow: ellipsis; /* Трехточечное обрезание */
+    text-overflow: ellipsis;
+}
+
+.limit-header {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .sidebar-scroll::-webkit-scrollbar {
@@ -46,10 +57,9 @@ section {
 .sidebar-scroll::-webkit-scrollbar-thumb {
     width: 8px;
     background: rgba(0, 0, 0, 0.4);
-    border-radius: 8px; /* Цвет полосы прокрутки */
+    border-radius: 8px;
 }
 
-/* Для Internet Explorer */
 .sidebar-scroll::-ms-scrollbar {
     width: 8px;
 }

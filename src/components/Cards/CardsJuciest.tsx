@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Grid, GridItem, Heading, Image } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { CardsCounter } from '../Buttons/Cardscounter';
 import { LikesCounter } from '../Buttons/LikesCounter';
@@ -7,22 +8,30 @@ import data1 from './../../data/juciest.json';
 const RecipesJuciest = data1;
 
 interface CardsJuciestProps {
-    cardCount: number; // Указываем тип для cardCount
+    cardCount: number;
 }
 
 export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
-    const displayedRecipes = RecipesJuciest.slice(0, cardCount); // Ограничиваем количество карточек
+    const displayedRecipes = RecipesJuciest.slice(0, cardCount);
 
     return (
-        <Grid mt='24px' templateColumns='repeat(2, 1fr)' gap='24px'>
+        <Grid mt='24px' mb='16px' templateColumns='repeat(2, 1fr)' gap='24px'>
             {displayedRecipes.map((recipe, index) => (
                 <GridItem key={index}>
-                    <Flex width='668px' height='244px' alignItems='center'>
+                    <Flex
+                        width='668px'
+                        height='244px'
+                        alignItems='center'
+                        borderRadius='6px'
+                        border='1px rgba(0, 0, 0, 0.08) solid'
+                    >
                         <Box width='50%' height='244px'>
                             <Image
                                 width='346px'
                                 height='244px'
                                 objectFit='cover'
+                                borderTopLeftRadius='8px'
+                                borderBottomLeftRadius='8px'
                                 src={recipe.image}
                                 alt={recipe.image}
                             />
@@ -43,24 +52,8 @@ export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
                                     <LikesCounter />
                                 </Flex>
                             </Flex>
-                            <Heading
-                                as='h3'
-                                fontSize='20px'
-                                lineHeight='28px'
-                                fontWeight='500'
-                                mb='8px'
-                            >
-                                {recipe.type}
-                            </Heading>
-                            <Box
-                                as='p'
-                                fontSize='14px'
-                                lineHeight='20px'
-                                mb='26px'
-                                textAlign='left'
-                            >
-                                {recipe.description}
-                            </Box>
+                            <RecipeHeading type={recipe.type} />
+                            <DescriptionBox description={recipe.description} />
                             <Flex gap='8px' justifyContent='flex-end'>
                                 <Button
                                     padding='6px 12px'
@@ -86,5 +79,58 @@ export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
                 </GridItem>
             ))}
         </Grid>
+    );
+};
+
+const RecipeHeading: React.FC<{ type: string }> = ({ type }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleToggle = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    return (
+        <Heading
+            as='h3'
+            fontSize='20px'
+            lineHeight='28px'
+            fontWeight='500'
+            mb='8px'
+            whiteSpace={isExpanded ? 'normal' : 'nowrap'}
+            overflow='hidden'
+            textOverflow='ellipsis'
+            onClick={handleToggle}
+            cursor='pointer'
+        >
+            {type}
+        </Heading>
+    );
+};
+
+const DescriptionBox: React.FC<{ description: string }> = ({ description }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleToggle = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    return (
+        <Box
+            as='p'
+            fontSize='14px'
+            lineHeight='20px'
+            mb='26px'
+            textAlign='left'
+            overflow='hidden'
+            display={isExpanded ? 'block' : '-webkit-box'}
+            sx={{
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: isExpanded ? 'unset' : 3,
+            }}
+            onClick={handleToggle}
+            cursor='pointer'
+        >
+            {description}
+        </Box>
     );
 };

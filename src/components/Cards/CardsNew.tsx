@@ -1,3 +1,4 @@
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 import { useState } from 'react';
 
@@ -19,7 +20,7 @@ const RecipesNew = [
 
     {
         category: {
-            name: 'Вегетарианские блюда',
+            name: 'Веганские блюда',
             icon: '/src/assets/icons/sidebar/icon7.svg',
         },
 
@@ -50,54 +51,117 @@ const RecipesNew = [
     },
 ];
 
-export const CardsNew = () => {
-    const [isExpanded, setIsExpanded] = useState(false); // Перенесите useState сюда
+export const CardsNew = () => (
+    <Flex gap='24px' m='24px 0 40px' position='relative'>
+        {RecipesNew.map((recipe, index) => (
+            <Box
+                key={index}
+                width='322px'
+                height='414px'
+                borderRadius='8px'
+                border='1px rgba(0, 0, 0, 0.08) solid'
+            >
+                <Image
+                    src={recipe.image}
+                    alt={recipe.type}
+                    borderTopLeftRadius='8px'
+                    borderTopRightRadius='8px'
+                />
+                <Box p='16px 24px 20px 16px'>
+                    <RecipeHeading type={recipe.type} />
+                    <DescriptionBox description={recipe.description} />
+                    <Flex justifyContent='space-between' alignItems='center'>
+                        <Flex gap='8px' p='3px 8px' bg='var( --primary-color7)' borderRadius='8px'>
+                            <Box>
+                                <Image src={recipe.category.icon} alt={recipe.category.name} />
+                            </Box>
+                            <Box fontSize='14px'>{recipe.category.name}</Box>
+                        </Flex>
+                        <Flex>
+                            <CardsCounter />
+                            <LikesCounter />
+                        </Flex>
+                    </Flex>
+                </Box>
+            </Box>
+        ))}
+        <Box
+            position='absolute'
+            p='12px'
+            width='48px'
+            height='48px'
+            borderRadius='8px'
+            background='var(--black-color)'
+            left='15px'
+            top='50%'
+            transform='translate(-50%, -50%)'
+        >
+            <Image as={ArrowBackIcon} alt='arrow' boxSize='100%' color='white' />
+        </Box>
+        <Box
+            position='absolute'
+            p='12px'
+            width='48px'
+            height='48px'
+            borderRadius='8px'
+            background='var(--black-color)'
+            right='-35px'
+            top='50%'
+            transform='translate(-50%, -50%)'
+        >
+            <Image as={ArrowForwardIcon} alt='arrow' boxSize='100%' color='white' />
+        </Box>
+    </Flex>
+);
+const RecipeHeading: React.FC<{ type: string }> = ({ type }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleToggle = () => {
+        setIsExpanded(!isExpanded);
+    };
 
     return (
-        <Flex gap='24px' mt='24px'>
-            {RecipesNew.map((recipe, index) => (
-                <Box key={index} width='322px' height='414px'>
-                    <Image src={recipe.image} alt={recipe.type} />
-                    <Box p='16px 24px 20px 16px'>
-                        <Heading
-                            as='h3'
-                            fontSize='20px'
-                            lineHeight='28px'
-                            fontWeight='500'
-                            mb='8px'
-                        >
-                            {recipe.type}
-                        </Heading>
-                        <Box
-                            as='p'
-                            fontSize='14px'
-                            lineHeight='2'
-                            mb='26px'
-                            textAlign='left'
-                            overflow='hidden'
-                            whiteSpace={isExpanded ? 'normal' : 'nowrap'}
-                            textOverflow={isExpanded ? 'clip' : 'ellipsis'}
-                            maxHeight={isExpanded ? 'none' : '80px'} // Замените на 60px для 3 строк
-                            cursor={isExpanded ? 'default' : 'pointer'}
-                            onClick={() => setIsExpanded(!isExpanded)} // переключение состояния
-                        >
-                            {recipe.description}
-                        </Box>
-                        <Flex justifyContent='space-between' alignItems='center'>
-                            <Flex gap='8px'>
-                                <Box>
-                                    <Image src={recipe.category.icon} alt={recipe.category.name} />
-                                </Box>
-                                <Box>{recipe.category.name}</Box>
-                            </Flex>
-                            <Flex>
-                                <CardsCounter />
-                                <LikesCounter />
-                            </Flex>
-                        </Flex>
-                    </Box>
-                </Box>
-            ))}
-        </Flex>
+        <Heading
+            as='h3'
+            fontSize='20px'
+            lineHeight='28px'
+            fontWeight='500'
+            mb='8px'
+            whiteSpace={isExpanded ? 'normal' : 'nowrap'}
+            overflow='hidden'
+            textOverflow='ellipsis'
+            onClick={handleToggle}
+            cursor='pointer'
+        >
+            {type}
+        </Heading>
+    );
+};
+
+const DescriptionBox: React.FC<{ description: string }> = ({ description }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleToggle = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    return (
+        <Box
+            as='p'
+            fontSize='14px'
+            lineHeight='20px'
+            mb='26px'
+            textAlign='left'
+            overflow='hidden'
+            display={isExpanded ? 'block' : '-webkit-box'}
+            sx={{
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: isExpanded ? 'unset' : 3,
+            }}
+            onClick={handleToggle}
+            cursor='pointer'
+        >
+            {description}
+        </Box>
     );
 };

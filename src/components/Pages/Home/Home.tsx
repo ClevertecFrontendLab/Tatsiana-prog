@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import IconArrow from '../../../assets/icons/icon-arrow.png';
 import { CardsJuciest } from '../../Cards/CardsJuciest';
@@ -37,9 +38,33 @@ const Home = () => (
                                 <CardsNew />
                             </Box>
                             <Box mb='40px'>
-                                <Heading as='h2' textAlign='left'>
-                                    Самое сочное
-                                </Heading>
+                                <Flex justifyContent='space-between' alignItems='center'>
+                                    <Heading as='h2' textAlign='left'>
+                                        Самое сочное
+                                    </Heading>
+                                    <Link
+                                        as={RouterLink}
+                                        to='/samoe-sochnoe'
+                                        p='10px 24px'
+                                        mr='0'
+                                        ml='auto'
+                                        fontWeight='700'
+                                        display='Flex'
+                                        alignItems='center'
+                                        borderRadius='8px'
+                                        bg='var(--primary-color5)'
+                                        color='var(--black-color)'
+                                        _hover={{
+                                            bg: 'var(--primary-color4)',
+                                        }}
+                                    >
+                                        {' '}
+                                        вся подборка
+                                        <Box as='span' ml='9px'>
+                                            <Image src={IconArrow} alt='icon'></Image>
+                                        </Box>
+                                    </Link>
+                                </Flex>
                                 <CardsJuciest cardCount={4} />
                             </Box>
                             <Box p='24px' bg='var(--primary-color1)' mb='40px'>

@@ -12,6 +12,7 @@ import {
     Stack,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import IconExit from '../../assets/icons/icon-exit.png';
 import data from '../../data/menu.json';
@@ -56,7 +57,8 @@ export const SideBar = () => {
                                 {Object.entries(item.custom).map(([typeKey, type]) => (
                                     <Box key={typeKey}>
                                         <Link
-                                            href='#'
+                                            as={RouterLink} // Используйте Link из Chakra UI
+                                            to='/veganskaya-kuhnya'
                                             mt='16px'
                                             mb='16px'
                                             p='11px'

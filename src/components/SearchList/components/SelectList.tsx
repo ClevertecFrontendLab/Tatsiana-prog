@@ -10,9 +10,9 @@ export const SelectList = () => (
         color='rgba(0, 0, 0, 0.64)'
         borderRadius='6px'
     >
-        <option value='react'>Продукт1</option>
-        <option value='vue'>Продукт2</option>
-        <option value='angular'>Продукт3</option>
-        <option value='svelte'>Продукт4</option>
+        <option value='продукт1'>Продукт1</option>
+        <option value='продукт2'>Продукт2</option>
+        <option value='продукт3'>Продукт3</option>
+        <option value='продукт4'>Продукт4</option>
     </Select>
 );

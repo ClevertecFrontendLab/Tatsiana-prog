@@ -19,7 +19,7 @@ export const UserMetrics = () => (
                 alignItems: 'center',
                 width: '208px',
                 height: '208px',
-                right: '0',
+                right: '-26px',
                 padding: '0',
                 background:
                     'radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, rgba(196, 255, 97, 0.70) 0%, rgba(255, 255, 255, 0) 100%)',

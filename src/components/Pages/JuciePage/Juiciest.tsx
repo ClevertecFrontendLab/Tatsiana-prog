@@ -7,6 +7,7 @@ import { Header } from '../../Header/Header';
 import { SearchList } from '../../SearchList/SearchList';
 import { SideBar } from '../../Sidebar/SideBar';
 import { UserMetrics } from '../../UserMetrics/UserMetrics';
+import { VeganBlock } from '../Home/VeganBlock';
 
 const Juciest = () => (
     <>
@@ -31,6 +32,7 @@ const Juciest = () => (
                             <CardsJuciest cardCount={8} />
                             <ButttonMore />
                         </Box>
+                        <VeganBlock />
                     </Box>
                     <UserMetrics />
                 </Flex>
