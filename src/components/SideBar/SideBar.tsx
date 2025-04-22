@@ -26,7 +26,7 @@ export const SideBar = () => {
             flexDirection='column'
             justifyContent='space-between'
             p='32px 0'
-            display={{ md: 'flex', sm: 'none' }}
+            display={{ lg: 'flex', md: 'none', base: 'none' }}
         >
             <Stack height='644px' overflowY='scroll' className='sidebar-scroll'>
                 <ChakraAccordion allowMultiple width='256px' pt='14px' pl='10px' pb='10px' pr='4px'>

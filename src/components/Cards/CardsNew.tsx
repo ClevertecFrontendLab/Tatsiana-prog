@@ -52,9 +52,10 @@ const RecipesNew = [
 ];
 
 export const CardsNew = () => (
-    <Flex gap='24px' m='24px 0 40px' position='relative'>
+    <Flex gap='24px' m='24px 0 40px' position='relative' overflow='hidden'>
         {RecipesNew.map((recipe, index) => (
             <Box
+                flex='0 0 auto'
                 key={index}
                 width='322px'
                 height='414px'
@@ -62,6 +63,7 @@ export const CardsNew = () => (
                 border='1px rgba(0, 0, 0, 0.08) solid'
             >
                 <Image
+                    height='230px'
                     src={recipe.image}
                     alt={recipe.type}
                     borderTopLeftRadius='8px'

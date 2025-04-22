@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image, Link, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Link, useMediaQuery } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { FooterMobile } from '~/components/FooterMobile/FooterMobile';
@@ -14,10 +14,8 @@ import { CulinarBlog } from './CulinarBlog';
 import { VeganBlock } from './VeganBlock';
 
 const Home = () => {
-    const testId = useBreakpointValue({
-        base: 'juiciest-link-mobile',
-        md: 'juiciest-link',
-    });
+    const [isMobile] = useMediaQuery('(max-width: 48em)'); // 48em ~ 768px
+    const testId = isMobile ? 'juiciest-link-mobile' : 'juiciest-link';
 
     return (
         <>
@@ -30,7 +28,7 @@ const Home = () => {
                             <Heading
                                 as='h1'
                                 size='48px'
-                                color='0000'
+                                color='#000'
                                 mt='32px'
                                 mb='32px'
                                 fontWeight='bold'
@@ -46,7 +44,6 @@ const Home = () => {
                                 </Heading>
                                 <CardsNew />
                             </Box>
-
                             <Box mb='40px'>
                                 <Flex justifyContent='space-between' alignItems='center'>
                                     <Heading as='h2' textAlign='left'>
@@ -60,7 +57,7 @@ const Home = () => {
                                         mr='0'
                                         ml='auto'
                                         fontWeight='700'
-                                        display='flex'
+                                        display={{ base: 'none', md: 'flex' }}
                                         alignItems='center'
                                         borderRadius='8px'
                                         bg='var(--primary-color5)'
@@ -76,11 +73,37 @@ const Home = () => {
                                     </Link>
                                 </Flex>
                                 <CardsJuciest cardCount={4} />
+                                <Link
+                                    as={RouterLink}
+                                    to='/samoe-sochnoe'
+                                    data-test-id={testId}
+                                    p='10px 24px'
+                                    mr='0'
+                                    ml='auto'
+                                    fontWeight='700'
+                                    display={{ base: 'inline-flex', md: 'none' }}
+                                    mt='50px'
+                                    justifyContent='center'
+                                    alignItems='center'
+                                    borderRadius='8px'
+                                    bg='var(--primary-color5)'
+                                    color='var(--black-color)'
+                                    _hover={{
+                                        bg: 'var(--primary-color4)',
+                                    }}
+                                >
+                                    вся подборка
+                                    <Box as='span' ml='9px'>
+                                        <Image src={IconArrow} alt='icon' />
+                                    </Box>
+                                </Link>
                             </Box>
-
                             <Box p='24px' bg='var(--primary-color1)' mb='40px'>
-                                <Flex justifyContent='space-between'>
-                                    <Heading as='h2' textAlign='left'>
+                                <Flex
+                                    flexDirection={{ base: 'column', md: 'row' }}
+                                    justifyContent={{ base: 'center', md: 'space-between' }}
+                                >
+                                    <Heading as='h2' textAlign={{ base: 'center', md: 'left' }}>
                                         Кулинарные блоги
                                     </Heading>
                                     <Box>

@@ -10,7 +10,7 @@ export const UserMetrics = () => (
         flexDirection='column'
         justifyContent='space-between'
         alignItems='center'
-        display={{ md: 'flex', sm: 'none' }}
+        display={{ lg: 'flex', md: 'none', base: 'none' }}
     >
         <Flex flexDirection='column' gap='32px' pt='16px' pr='56px' pl='114px'>
             <CardStorage />

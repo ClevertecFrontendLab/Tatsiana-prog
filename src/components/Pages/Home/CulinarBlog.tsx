@@ -15,7 +15,7 @@ const culinar = [
         text: 'Как раз после праздников, когда мясные продукты еще остались, но никто их уже не хочет, время варить солянку.',
     },
     {
-        name: 'Екатерина Константинопольская',
+        name: 'Екатерина Казакова',
         image: '/src/assets/image/culinarblogs/3.png',
         contacts: '@bake_and_pie',
         text: 'Как раз после праздников, когда мясные продукты еще остались, но никто их уже не хочет, время варить солянку.',
@@ -24,19 +24,23 @@ const culinar = [
 
 export const CulinarBlog = () => (
     <>
-        <Flex gap='16px' mt='32px'>
+        <Flex gap='16px' mt='32px' flexDirection={{ base: 'column', xl: 'row' }}>
             {culinar.map((culinarItem, index) => (
                 <Box
                     key={index}
                     width='426.67'
-                    height='184px'
                     p='24px 24px 20px 24px'
                     background='white'
                     borderRadius='8px'
                     border='1px solid rgba(0, 0, 0, 0.08)'
                 >
                     <Flex mb='28px'>
-                        <Image src={culinarItem.image} alt={culinarItem.name} />
+                        <Image
+                            width='48px'
+                            height='48px'
+                            src={culinarItem.image}
+                            alt={culinarItem.name}
+                        />
                         <Box ml='16px'>
                             <Heading as='h4' fontSize='18px' textAlign='left'>
                                 {culinarItem.name}

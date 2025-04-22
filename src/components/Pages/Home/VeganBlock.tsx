@@ -63,15 +63,21 @@ export const VeganBlock: React.FC = () => {
 
     return (
         <Box mt='40px' pt='24px' borderTop=' 1px solid rgba(0, 0, 0, 0.08)'>
-            <Flex justifyContent='space-between' mb='24px'>
-                <Heading as='h2'>Веганская кухня</Heading>
-                <Box width='668px' textAlign='left'>
+            <Flex
+                justifyContent='space-between'
+                mb='24px'
+                flexDirection={{ base: 'column', md: 'row' }}
+            >
+                <Heading as='h2' mb='20px' textAlign={{ base: 'center', md: 'left' }}>
+                    Веганская кухня
+                </Heading>
+                <Box textAlign='left'>
                     Интересны не только убеждённым вегетарианцам, но и тем, кто хочет попробовать
                     вегетарианскую диету.
                 </Box>
             </Flex>
-            <Flex gap='24px'>
-                <Flex gap='24px'>
+            <Flex gap='24px' flexDirection={{ base: 'column', xxl: 'row' }}>
+                <Flex gap='24px' flexDirection={{ base: 'column', md: 'row' }}>
                     {VeganBlockCards.map((VeganBlockCardItem, index) => (
                         <Box
                             key={index}
@@ -120,6 +126,8 @@ export const VeganBlock: React.FC = () => {
                                 <Flex gap='8px'>
                                     <Box>
                                         <Image
+                                            width='24px'
+                                            height='24px'
                                             src={VeganBlockCardItem.category.icon}
                                             alt={VeganBlockCardItem.category.name}
                                         />
@@ -134,7 +142,7 @@ export const VeganBlock: React.FC = () => {
                         </Box>
                     ))}
                 </Flex>
-                <Flex flexDirection='column' gap='12px' w='668px'>
+                <Flex flexDirection='column' gap='12px'>
                     {fooddish.map((fooddishItem, index) => (
                         <Flex
                             key={index}
@@ -142,9 +150,16 @@ export const VeganBlock: React.FC = () => {
                             justifyContent='space-between'
                             borderRadius='8px'
                             border='1px rgba(0, 0, 0, 0.08) solid'
+                            flexDirection={{ base: 'column', md: 'row' }}
+                            gap='25px'
                         >
                             <Flex gap='12px' alignItems='center'>
-                                <Image src={fooddishItem.image} alt={fooddishItem.title} />
+                                <Image
+                                    width='40px'
+                                    height='40px'
+                                    src={fooddishItem.image}
+                                    alt={fooddishItem.title}
+                                />
                                 <Box as='span' fontSize='20px' fontWeight='500'>
                                     {fooddishItem.title}
                                 </Box>
