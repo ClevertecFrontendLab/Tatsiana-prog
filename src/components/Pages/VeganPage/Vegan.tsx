@@ -9,7 +9,6 @@ import { SearchList } from '../../SearchList/SearchList';
 import { SideBar } from '../../Sidebar/SideBar';
 import { UserMetrics } from '../../UserMetrics/UserMetrics';
 import { DessertBlock } from '../Home/DessertBlock';
-
 const Vegan = () => (
     <>
         <Header></Header>
@@ -42,7 +41,12 @@ const Vegan = () => (
                             </Box>
                             <SearchList></SearchList>
                             <Tabs defaultIndex={2}>
-                                <TabList justifyContent='center' fontSize='16px' fontWeight='600'>
+                                <TabList
+                                    justifyContent='center'
+                                    fontSize='16px'
+                                    fontWeight='600'
+                                    flexWrap='wrap'
+                                >
                                     {[
                                         'Закуски',
                                         'Первые блюда',

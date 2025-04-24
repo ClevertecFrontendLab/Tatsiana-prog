@@ -35,9 +35,9 @@ export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
                     alignItems='center'
                     borderRadius='6px'
                     border='1px rgba(0, 0, 0, 0.08) solid'
-                    flexDirection={{ base: 'column', sm: 'row' }}
+                    flexDirection={{ base: 'column', md: 'row' }}
                 >
-                    <Box width={{ base: '100%', sm: '50%' }}>
+                    <Box width={{ base: '100%', md: '50%' }}>
                         <Image
                             width={{ xxl: '333px', xl: '100%', base: '100%' }}
                             height={{ xxl: '244px', sm: '244px' }}
@@ -51,7 +51,7 @@ export const CardsJuciest: React.FC<CardsJuciestProps> = ({ cardCount }) => {
                     </Box>
                     <Box
                         as='div'
-                        width={{ base: '100%', sm: '50%' }}
+                        width={{ base: '100%', md: '50%' }}
                         padding='20px 24px'
                         boxSizing='border-box'
                     >

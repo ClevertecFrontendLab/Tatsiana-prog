@@ -72,8 +72,8 @@ export const DessertBlock: React.FC = () => {
                     теста многообразны и невероятно популярны.
                 </Box>
             </Flex>
-            <Flex gap='24px'>
-                <Flex gap='24px'>
+            <Flex gap='24px' flexDirection={{ base: 'column', xxl: 'row' }}>
+                <Flex gap='24px' flexDirection={{ base: 'column', md: 'row' }}>
                     {DessertBlockCards.map((DessertBlockCardItem, index) => (
                         <Box
                             key={index}
@@ -119,8 +119,14 @@ export const DessertBlock: React.FC = () => {
                                     : `${DessertBlockCardItem.description.substring(0, 100)}...`}
                             </Box>
                             <Flex justifyContent='space-between'>
-                                <Flex gap='8px'>
-                                    <Box>
+                                <Flex
+                                    gap='8px'
+                                    alignItems='center'
+                                    p='4px 8px'
+                                    bg='var(--primary-color4)'
+                                    borderRadius='8px'
+                                >
+                                    <Box w='40px' h='40px'>
                                         <Image
                                             src={DessertBlockCardItem.category.icon}
                                             alt={DessertBlockCardItem.category.name}
@@ -146,7 +152,12 @@ export const DessertBlock: React.FC = () => {
                             border='1px rgba(0, 0, 0, 0.08) solid'
                         >
                             <Flex gap='12px' alignItems='center'>
-                                <Image src={fooddishItem.image} alt={fooddishItem.title} />
+                                <Image
+                                    src={fooddishItem.image}
+                                    alt={fooddishItem.title}
+                                    w='40px'
+                                    h='40px'
+                                />
                                 <Box as='span' fontSize='20px' fontWeight='500'>
                                     {fooddishItem.title}
                                 </Box>

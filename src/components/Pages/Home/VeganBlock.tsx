@@ -123,7 +123,12 @@ export const VeganBlock: React.FC = () => {
                                     : `${VeganBlockCardItem.description.substring(0, 100)}...`}
                             </Box>
                             <Flex justifyContent='space-between'>
-                                <Flex gap='8px'>
+                                <Flex
+                                    gap='8px'
+                                    p='4px 8px'
+                                    bg='var(--primary-color4)'
+                                    borderRadius='8px'
+                                >
                                     <Box>
                                         <Image
                                             width='24px'

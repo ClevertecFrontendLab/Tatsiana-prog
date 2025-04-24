@@ -1,4 +1,4 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex, Image } from '@chakra-ui/react';
 
 import ReciepeIcon from '../../assets/icons/icon-recipe.svg';
 import { CardStorage } from '../Metrics/CardStorage';
@@ -30,7 +30,9 @@ export const UserMetrics = () => (
                     'radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, rgba(196, 255, 97, 0.70) 0%, rgba(255, 255, 255, 0) 100%)',
             }}
         >
-            <img
+            <Image
+                w='40px'
+                h='40px'
                 src={ReciepeIcon}
                 alt='Save'
                 style={{

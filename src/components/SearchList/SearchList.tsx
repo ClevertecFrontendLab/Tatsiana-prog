@@ -70,9 +70,9 @@ export const SearchList = () => {
     };
 
     return (
-        <Box width='518px' m=' 0 auto 56px'>
+        <Box m=' 0 auto 56px' p='0 25px'>
             <form>
-                <Flex gap='12px' justifyContent='center' position='relative'>
+                <Flex gap='12px' justifyContent='center' position='relative' display='inline-flex'>
                     <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
                         <PopoverTrigger>
                             <SelectTrigger
@@ -110,7 +110,7 @@ export const SearchList = () => {
                             pr='48px'
                             pb='13px'
                             pl='16px'
-                            w='458px'
+                            w={{ base: '100%', md: '458px' }}
                             h='48px'
                             placeholder='Название или ингредиент...'
                             sx={{
@@ -133,7 +133,13 @@ export const SearchList = () => {
                         </Box>
                     </Box>{' '}
                 </Flex>
-                <Flex gap='10px' align='center' mt='24px' justifyContent='center'>
+                <Flex
+                    gap='10px'
+                    align='center'
+                    mt='24px'
+                    justifyContent='center'
+                    flexDirection={{ base: 'column', md: 'row' }}
+                >
                     <SwitchWithLabel></SwitchWithLabel>
                     <SelectList></SelectList>
                 </Flex>
